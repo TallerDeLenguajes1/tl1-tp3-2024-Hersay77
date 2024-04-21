@@ -70,6 +70,7 @@ int main(){
         }
     }
 
+    sumatoria = 0; //inicio sumatoria
     //v) Mostrar por pantalla todo lo cargado. Incluyendo un total a pagar por cliente (sumatoria del costo de todos los productos)
     puts("\n\n*******MOSTRANDO DATOS********");
     for (int i = 0; i < cantClientes; i++)
@@ -90,21 +91,15 @@ int main(){
             printf("El costo total del producto %s es:$ %.2f\n", clientes[i].Productos[j].TipoProducto ,costoTotal);
             sumatoria  += costoTotal; //parte del punto 5 - total a pagaar por cliente que seria la suma de los costos totales de cada producto 
         }
-
+        costoTotal = 0; //reinicio costo total de cda producto
         printf("\nEl costo total de todos los productos para el cliente (sumatoria) es:$ %.2f\n", sumatoria);
     }
 
-    for (int i = 0; i < cantClientes; i++)
-    {   
-        for (int j = 0; j < clientes[i].CantidadProductosAPedir; j++)
-        {
-            free(clientes[i].Productos); //libero memoria dinamica para cada producto de cada cliente
-        }
-    }
-    
+   
 
     for (int i = 0; i < cantClientes; i++)
     {
+        free(clientes[i].Productos); //libero memoria dinamica para cada producto de cada cliente
         free(clientes[i].NombreCliente); //libero memoria dinamica para cada nombre
     }
 
